@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('./partials/head') %>
+    <title>BlogVista</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <% if (locals.loggedin) { %>
+        <div class="container" >
+            <div class="title" style="margin: 10px; text-align: center;">
+                <h2><%= blogs.title %></h2>
+            </div>
+            <div class="image" style="margin: 10px;padding: 5px;display: flex; justify-content: center; margin-bottom: 30px;">
+                <img src="<%= blogs.coverImage %>" alt="" width="400px">
+            </div>
+            <pre style="font-size: 20px;font-weight: 500; text-wrap: wrap;"><%= blogs.body %></pre>
+        </div>
+
+        <div style="margin-left: 80px;display: flex; gap:15px; align-items: center;">
+             <img src="/avatar.jpeg" alt="" width="50px">
+             <p style="font-size: 20px;padding-top: 10px;;"><%= blogs.createdBy.FullName %></p>
+        </div>
+
+        <div style="margin-left: 80px;margin-top:10px;padding: 10px;">
+            <h3>Comments (<%= comments.length %>)</h3>
+            <% comments.forEach(comment => { %>
+                <div class="comment" style="display: flex;gap:10px;margin:10px; margin-left: 0px;;">
+                    <img src="/avatar.jpeg" alt="" width="40px">
+                    <p style="padding-top:10px;font-size: 20px;font-weight: 500;"><%= comment.content %></p>
+                </div>
+            <% }) %>
+            <% if (locals.loggedin) { %>
+                <form action="/blog/comment/<%= blogs._id %>" method="post" >
+                    <p ><input type="text" name="content"  style="width: 90%;"></p>
+                    <input type="submit" class="btn btn-primary" value="ADD">
+                </form>
+            <% } %>
+            
+        </div>
+            
+    <% } %>
+    
+        
+   
+    <%- include('./partials/scripts') %>
+</body>
+</html>

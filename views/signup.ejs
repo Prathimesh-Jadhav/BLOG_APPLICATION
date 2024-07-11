@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>BlogVista</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <div class="container" style="padding: 20px;">
+            <h2 style="text-align: center;">Register</h2>
+            <form method="post" action="/user/signup">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" name="userName">FullName</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="userName">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" name="userEmail">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="userEmail">
+                    <div>We will never share your Email with anynone</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" name="userPassword">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="userPassword">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </div>
+
+        <div class="footimage" style="display: flex; justify-content: center;">
+            <img src="/blog2.avif" alt="" width="400px" >
+          </div>
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>
